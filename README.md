@@ -1,45 +1,33 @@
-## Project Components
+## Option 2
 
-- Restful API (Lambda Functions, API Gateway and DynamoDb)
-- Client (React)
+Update project 4 to game models
+add feature add game, rename, delete game
+api_url: https://xy8g2q4blf.execute-api.us-east-1.amazonaws.com/dev/games
 
-## How to run the application
-
-### Deploy Backend
-
-To deploy an application run the following commands (You should have aws credentials configured yourself first):
-
-```bash
+## BE deployment
+```
 cd backend
-yarn install
-sls deploy -v
+npm install --save-dev
+sls config credentials --provider aws --key <ACCESS_KEY> --secret <SECRET_KEY> --profile serverless
+serverless login
+sls deploy --verbose --aws-profile serverless
 ```
+after BE completedly done deployment -> get appid
+### FE run locally
 
-### Update frontend configuration
-
-```js
-const apiId = 'v9vruqc5v5'
-export const apiEndpoint = `https://${apiId}.execute-api.us-east-1.amazonaws.com/dev`
-
-export const authConfig = {
-  domain: 'dev-wsbkqmyqiscn8v1f.us.auth0.com',
-  clientId: 'EdS6j21e2HLfRTrNNNeo24C4VRxb5eU9',
-  callbackUrl: 'http://localhost:3000/callback'
-}
 ```
-
-### Frontend
-
-```bash
 cd client
-yarn install
-yarn start
+npm install --save-dev
+npm run start
 ```
 
-## Current Deplyment details
+## Evidence
 
-API Endpoint
+### Get game list:
+![image](https://github.com/baominh03/baolm1_cloud_dev_capstone/assets/39981269/25924978-cdea-44e4-a56a-ad15196284c3)
 
-```
-https://v9vruqc5v5.execute-api.us-east-1.amazonaws.com/dev/games
-```
+### add new game image:
+![image](https://github.com/baominh03/baolm1_cloud_dev_capstone/assets/39981269/ccbffc7c-0b34-4334-a262-6e8f0431133c)
+
+### Delete game:
+![image](https://github.com/baominh03/baolm1_cloud_dev_capstone/assets/39981269/419996bb-6d2e-4b3f-b7f8-cfa948881248)
